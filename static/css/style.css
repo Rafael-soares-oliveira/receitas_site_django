@@ -155,9 +155,11 @@ h6 {
 .recipe {
   background: var(--color-white);
   box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1);
   transition: all 200ms ease-in-out;
   border-radius: 5rem;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .recipe-cover {
@@ -186,7 +188,7 @@ h6 {
 
 .recipe-title a{
   text-decoration: none;
-  color: var(--color-dark-text);
+  color: var(--color-black);
   font-size: 2.2rem;
 }
 
@@ -219,7 +221,7 @@ h6 {
 .recipe-preparation-info-container {
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: var(--spacing-gutter-medium);
+  margin-bottom: var(--spacing-gutter-large);
 }
 
 .recipe-preparation-info {
@@ -242,4 +244,13 @@ h6 {
 
 .recipe-footer a:hover {
   color: var(--color-primary-light-hover);
+}
+
+.recipe-preparation-title {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.recipe-preparation {
+  margin: var(--spacing-gutter-large);
 }

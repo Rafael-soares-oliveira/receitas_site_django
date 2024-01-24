@@ -12,10 +12,19 @@ def home(request):
     })
 
 
-def recipe(request):
+def recipe(request, id):
     recipe = get_object_or_404(Recipe, pk=id, is_published=True)
     return render(request, 'pages/recipe-view.html',
                   context={
                       'recipe': recipe,
                       'is_detail_page': True,
                   })
+
+
+def category(request, category_id):
+    recipe = get_list_or_404(Recipe.objects.filter(
+        category__id=category_id, is_published=True).order_by('-id'))
+    return render(request, 'pages/category-view.html', context={
+        'recipes': recipe,
+        'title': f'{recipe[0].category.name} | '  # type:ignore
+    })
