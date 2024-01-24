@@ -227,6 +227,7 @@ h6 {
 .recipe-preparation-info {
   color: var(--color-dark-text);
   font-size: 1.8rem;
+  text-align: center;
 }
 
 .recipe-footer {
@@ -253,4 +254,27 @@ h6 {
 
 .recipe-preparation {
   margin: var(--spacing-gutter-large);
+}
+
+.center {
+  text-align: center;
+}
+
+/*pagination*/
+.pagination {
+  padding: 1rem;
+}
+
+.page-link {
+  text-decoration: none;
+  color: var(--color-primary);
+  transition: all 200ms ease-in-out;
+  font-size: 2rem;
+  background: var(--color-white);
+  border-radius: 0.2rem;
+}
+
+.page-current {
+  color: black;
+  background-color: var(--color-gray-1);
 }

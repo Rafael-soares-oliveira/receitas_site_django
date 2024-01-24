@@ -1,0 +1,24 @@
+Pages
+- Home
+- Category
+- Recipe
+- Search
+- Register
+
+Funcionalities
+- 8 Recipes per Page
+- Pagination
+- Log in and Register
+
+Recipes
+- Cover
+- Title
+- Author
+    - First name / Last name
+    - Created at
+    - Category
+- Description
+- Preparation info
+    - Preparation time
+    - Servings
+- Preparation steps
