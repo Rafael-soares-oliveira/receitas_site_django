@@ -39,7 +39,7 @@ class RecipeTestModelBase(TestCase):
             preparation_step='Recipe Preparation Steps',
             preparation_step_is_html=False,
             is_published=True,
-            cover='',
+            cover='tests/tests_recipes/imagem_temporaria.jpg',
     ):
         if category_data is None:
             category_data = {}

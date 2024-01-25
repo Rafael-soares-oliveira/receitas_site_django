@@ -57,7 +57,7 @@ class RegisterForm(forms.ModelForm):
             'placeholder': 'Type your username',
         }),
         help_text='Username must have letters, numbers or one of those @.+-_.'
-        'The length should be between 4 and 16 characters.',
+        ' The length should be between 4 and 16 characters.',
         label='Username',
         min_length=4,
         max_length=16,
