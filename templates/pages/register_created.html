@@ -1,0 +1,15 @@
+{% extends "partials/base.html" %}
+
+{% block title %}Register Sucess | {% endblock title %}
+
+{% block content %}
+
+    {% if form.sucess %}
+        <div class="form-content">
+            <div class="message message-sucess">
+                Your user is created, please log in.
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock content %}

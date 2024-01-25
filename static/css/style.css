@@ -262,19 +262,107 @@ h6 {
 
 /*pagination*/
 .pagination {
-  padding: 1rem;
+  margin-top: var(--spacing-gutter-small);
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
 }
 
-.page-link {
+.pagination span {
+  display: block;
+}
+
+.page-link a {
   text-decoration: none;
   color: var(--color-primary);
   transition: all 200ms ease-in-out;
   font-size: 2rem;
   background: var(--color-white);
-  border-radius: 0.2rem;
+  border-radius: 1rem;
+  padding: 0.8rem;
+  margin-left: 1rem;
+  font-weight: bold;
 }
 
-.page-current {
+.page-link:hover {
+  scale: 1.15;
+}
+
+.page-current a {
   color: black;
-  background-color: var(--color-gray-1);
+  background: #eee;
+}
+
+.page-current:hover {
+  scale: 1.0;
+}
+
+.page-item {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+}
+
+/*register authors*/
+.form-content {
+  margin: var(--spacing-gutter-small) auto;
+  max-width: 70rem;
+  margin-bottom: var(--spacing-gutter-medium);
+}
+
+.form-content h2 {
+  font-size: 3rem;
+  color: var(--color-primary-dark);
+}
+
+.form-content label, .form-content .help-text, .errorlist {
+  display: block;
+  margin: 0.5rem 0;
+  list-style-type: none;
+}
+
+.form-content label {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.help-text {
+  font-size: 1.4rem;
+  padding-left: 0.5rem;
+  padding-right: 0.3rem;
+}
+
+.errorlist {
+  color: var(--color-error-dark);
+}
+
+.form-content input, .form-content textarea, .form-content select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--color-primary-dark);
+}
+
+.form-content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: var(--spacing-gutter-small) var(--spacing-gutter-medium);
+}
+
+.form-content button {
+  padding: 1rem 2rem;
+  border: none;
+  background: var(--color-primary-dark);
+  color: var(--color-white);
+}
+
+.form-group {
+  transition: all 200ms ease-in-out;
+}
+
+.form-group input:hover {
+  scale: 1.05;
+}
+
+.form-group input:focus-within {
+  scale: 1.05;
 }

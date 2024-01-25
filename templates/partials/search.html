@@ -1,6 +1,6 @@
 <div class="search-container container">
     <form action="{% url "recipes:search" %}" method="get" class="search-form" autocomplete="off">
-        <input type="search" name="q" class="search-input" required>
+        <input type="search" name="q" class="search-input" placeholder='Search recipe' required>
         <button type="submit" class="search-button">
             <i class="fa fa-search"></i>
         </button>

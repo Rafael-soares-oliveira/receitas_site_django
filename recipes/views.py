@@ -53,10 +53,10 @@ def search(request):
             Q(description__icontains=search_term), is_published=True)
         ).order_by('-id')
 
-    if not search_term:
-        raise Http404
-
     page_object, pagination_range = make_pagination(request, recipe, PER_PAGE)
+
+    if not search_term:
+        raise Http404()
 
     return render(request, 'pages/search-view.html', {
         'title': f'Search for "{search_term}" | ',
