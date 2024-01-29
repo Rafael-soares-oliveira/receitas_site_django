@@ -82,9 +82,35 @@ h6 {
 }
 
 .header-logo {
+  margin-top: -4rem;
   font-size: 3.5rem;
   color: var(--color-white);
   text-decoration: none;
+}
+
+.button-login-logout {
+  display: flex;
+  flex-flow: row;
+  justify-content: end;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  gap: var(--spacing-gutter-small);
+}
+
+.button-login-logout button {
+  width: fit-content;
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 1.6rem;
+  text-decoration: underline;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.button-login-logout button:hover {
+  scale: 1.1;
+  color: var(--color-white);
 }
 
 /*search*/

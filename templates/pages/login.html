@@ -1,0 +1,20 @@
+{% extends "partials/base.html" %}
+
+{% block title %}Login | {% endblock title %}
+
+{% block content %}
+
+    {% include "partials/messages.html" %}
+
+    <div class="form-content">
+        <h2>Login</h2>
+        {% if request.user.is_authenticated %}
+            <p>
+                Your are logged in with {{ request.user.username }}.
+            </p>
+        {% endif %}
+    </div>
+
+    {% include "partials/forms.html" %}
+
+{% endblock content %}

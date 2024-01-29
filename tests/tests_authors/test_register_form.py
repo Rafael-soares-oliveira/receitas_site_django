@@ -126,3 +126,18 @@ class AuthorRegisterFormIntegrationTest(DjangoTestCase):
         response = self.client.post(url, data=self.form_data, follow=True)
         msg = 'User e-mail is already in use'
         self.assertIn(msg, response.context['form'].errors.get('email'))
+
+    def test_author_created_can_login(self):
+        url = reverse('authors:created')
+        self.form_data.update({
+            'username': 'testuser',
+            'password': '@Bc123456',
+            'password_confirm': '@Bc123456',
+        })
+        self.client.post(url, data=self.form_data, follow=True)
+
+        is_authenticated = self.client.login(
+            username='testuser',
+            password='@Bc123456',
+        )
+        self.assertTrue(is_authenticated)

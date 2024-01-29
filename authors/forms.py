@@ -1,8 +1,8 @@
-import re
 from typing import Any
 from django.core.exceptions import ValidationError
 from django import forms
 from django.contrib.auth.models import User
+import re
 
 
 def strong_password(password):
@@ -129,3 +129,16 @@ class RegisterForm(forms.ModelForm):
             )
 
         return cleaned_data
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Type your username'
+        }),
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'placeholder': 'Type your password'
+        }),
+    )
