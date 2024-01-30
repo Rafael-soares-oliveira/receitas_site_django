@@ -45,12 +45,7 @@ class RecipeViewsTestHome(RecipeTestModelBase):
         self.assertIn('No recipes found', response.content.decode('utf-8'))
 
     def test_recipe_home_template_shows_contents_per_page(self):
-        for i in range(20):
-            self.make_recipe(
-                author_data={'username': f'user{i}'},
-                title=f'Pagination Test {i}',
-                slug=f'pagination-test-{i}',
-            )
+        self.make_recipe_in_batch(qty=20)
 
         with patch('recipes.views.PER_PAGE', new=10):
             response = self.client.get(reverse('recipes:home'))
