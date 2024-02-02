@@ -11,4 +11,9 @@ urlpatterns = [
     path('login/acess/', views.login_create, name='login_create'),
     path('', recipes.home, name='home'),
     path('logout/', views.logout_view, name='logout'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('dashboard/recipe/<int:id>/edit/', views.dashboard_recipe_edit,
+         name='dashboard_recipe_edit'),
+    path('dashboard/recipe/<int:id>/', views.recipe_not_published,
+         name='recipe_not_published'),
 ]

@@ -10,7 +10,7 @@
   --color-dark-text: #444;
   --color-info-light: #cce5ff;
   --color-debug-light: #cce5ff;
-  --color-success-light: #d4edda;
+  --color-success-light: #ffffff;
   --color-alert-light: #fff3cd;
   --color-warning-light: #fff3cd;
   --color-error-light: #f8d7da;
@@ -384,6 +384,12 @@ h6 {
   border: none;
   background: var(--color-primary-dark);
   color: var(--color-white);
+  transition: all 200ms ease-in-out;
+  border-radius: 2rem;
+}
+
+.form-content button:hover {
+  scale: 1.1;
 }
 
 .form-group {
@@ -396,6 +402,63 @@ h6 {
 
 .form-group input:focus-within {
   scale: 1.05;
+}
+
+/*Login*/
+.logged {
+  margin-top: var(--spacing-gutter-small);
+  font-size: 1.8rem;
+}
+
+.logged span {
+  color: var(--color-primary-dark);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.logged a {
+  color: blue;
+}
+
+/*Dashboard*/
+.main-content h2 {
+  font-size: 3.5rem;
+}
+
+.authors-dashboard-container {
+  margin: 1rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+}
+
+.authors-dashboard-container h3 {
+  margin-top: 2rem;
+}
+
+.authors-dashboard-container ul li {
+  list-style-type: none;
+  margin-top: 1rem;
+}
+
+.authors-dashboard-container a {
+  text-decoration: none;
+  color: blue;
+}
+
+.recipe-edit-button {
+  margin-bottom: var(--spacing-gutter-small);
+  text-align: center;
+}
+
+.recipe-edit-button button {
+  padding: 1rem;
+  border-radius: 1rem;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.recipe-edit-button button:hover {
+  scale: 1.1;
 }
 
 /* Messages */

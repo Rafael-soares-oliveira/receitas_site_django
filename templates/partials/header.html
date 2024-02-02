@@ -14,7 +14,7 @@
 
     {% else %}
     <div class='button-login-logout'>
-        <form action="" method='POST'>
+        <form action="{% url "authors:dashboard" %}" method='POST'>
             {% csrf_token %}
             <button type="submit">{{ request.user.first_name }} ({{ request.user.username }})</button>
         </form>

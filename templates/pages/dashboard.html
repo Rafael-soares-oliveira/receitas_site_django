@@ -1,0 +1,42 @@
+{% extends "partials/base.html" %}
+
+{% block title %}Dashboard | {% endblock title %}
+
+{% block content %}
+    <div class="main-content center container">
+        <h2>Dashboard {{ request.user.first_name }} {{ request.user.last_name }}</h2>
+        <div class="authors-dashboard-container">
+            <div class="published-container">
+                <h3>Recipes Published</h3>
+                <ul>
+                    {% for recipe in recipes_published %}
+                        <li>
+                            <a href="{% url "recipes:recipe" recipe.id %}">{{ recipe.title }}</a>
+                            <p>{{ recipe.update_at }}</p>
+                        </li>
+                    {% empty %}
+                    <li>
+                        <p>You do not have a recipe.</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div>
+                <h3>Recipes not yet Published</h3>
+                <ul class="not-published-container">
+                    {% for recipe in recipes_not_published %}
+                        <li>
+                            <a href="{% url "authors:recipe_not_published" recipe.id %}">{{ recipe.title }}</a>
+                        </li>
+                    {% empty %}
+                    <li>
+                        <p>You do not have a recipe.</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

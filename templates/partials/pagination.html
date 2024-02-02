@@ -1,10 +1,10 @@
 {% if recipes.has_other_pages %}
 
-    <div class="pagination">
+    <div class="pagination" aria-label="Pagination">
 
         {% if pagination_range.first_page_out_of_range %}
-        <div class="page-link">
-            <a href="?page=1{{ additional_url_query }}">1</a>
+        <div class="page-link" aria-label="Go to page 1">
+            <a  href="?page=1{{ additional_url_query }}">1</a>
         </div>
         <div class="page-item">
             <span>...</span>
@@ -13,13 +13,13 @@
 
         {% for page in pagination_range.pagination %}
             {% if pagination_range.current_page == page %}
-            <div class="page-link page-current">
+            <div class="page-link page-current" aria-label="Current page {{ page }}">
                 <a href="?page={{ page }}{{ additional_url_query }}">
                     {{ page }}
                 </a>
             </div>
             {% else %}
-            <div class="page-link">
+            <div class="page-link" aria-label="Go to page {{ page }}">
                 <a href="?page={{ page }}{{ additional_url_query }}">
                     {{ page }}
                 </a>
@@ -31,7 +31,7 @@
             <div class="page-item">
                 <span>...</span>
             </div>
-            <div class="page-link">
+            <div class="page-link" aria-label="Go to last page {{ last_page }}">
                 <a href="?page={{ last_page }}{{ additional_url_query }}">
                     {{ last_page }}
                 </a>

@@ -3,7 +3,14 @@
 {% block title %}{{ recipe.title }} | {% endblock title %}
 
 {% block content %}
-    <div class="main-content main-content-detail container">
-        {% include "partials/recipes_base.html" %}
-    </div>
+    {% if recipes.is_published %}
+        <div class="main-content main-content-detail container">
+            {% include "partials/recipes_base.html" %}
+        </div>
+
+    {% else %}
+        <div class="main-content main-content-detail container">
+            {% include "partials/recipe_not_published.html" %}
+        </div>
+    {% endif %}
 {% endblock content %}

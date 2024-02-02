@@ -8,13 +8,16 @@
 
     <div class="form-content">
         <h2>Login</h2>
+
         {% if request.user.is_authenticated %}
-            <p>
-                Your are logged in with {{ request.user.username }}.
+            <p class="logged">
+                Your are logged in with <span>{{ request.user.username }}</span>.
             </p>
         {% endif %}
     </div>
 
-    {% include "partials/forms.html" %}
+    {% if not request.user.is_authenticated %}
+        {% include "partials/forms.html" %}
+    {% endif %}
 
 {% endblock content %}

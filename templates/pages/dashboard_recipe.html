@@ -1,0 +1,27 @@
+{% extends "partials/base.html" %}
+
+{% block title %}Recipe Create | {% endblock title %}
+
+{% block content %}
+    <div class="main-content center container">
+        <h2>Recipe Create</h2>
+        <div class="authors-dashboard-container">
+            <div class="published-container">
+                <h3>Recipes Published</h3>
+                <ul>
+                    {% for recipe in recipes_published %}
+                        <li>
+                            <a href="{% url "authors:dashboard_recipe_edit" recipe.id %}">{{ recipe.title }}</a>
+                            <p>{{ recipe.update_at }}</p>
+                        </li>
+                    {% empty %}
+                    <li>
+                        <p>You do not have a recipe.</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

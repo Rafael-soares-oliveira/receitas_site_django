@@ -5,13 +5,13 @@ import time
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
 
-class RecipeBaseFunctionalTest(StaticLiveServerTestCase, RecipeMixin):
+class AuthorsBaseFunctionalTest(StaticLiveServerTestCase, RecipeMixin):
     def setUp(self) -> None:
-        self.browser = launchBrowser('--headless')
+        self.browser = launchBrowser()
         return super().setUp()
 
-    def sleep(self):
-        time.sleep(6)
+    def sleep(self, seconds=6):
+        time.sleep(seconds)
 
     def tearDown(self) -> None:
         self.browser.quit()
