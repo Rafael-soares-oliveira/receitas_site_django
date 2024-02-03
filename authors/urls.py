@@ -24,4 +24,8 @@ urlpatterns = [
 
      path('dashboard/recipe/<int:id>/', views.recipe_not_published,
           name='recipe_not_published'),
+
+     path('dashboard/recipe/<int:id>/unpublish',
+          views.dashboard_recipe_unpublish,
+          name='dashboard_recipe_unpublish'),
 ]

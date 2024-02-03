@@ -174,3 +174,22 @@ def dashboard_recipe_delete(request, id):
     messages.warning(request, 'Your recipe has been delete sucessfully!')
 
     return redirect(reverse('authors:dashboard'))
+
+
+@login_required(login_url='authors:login', redirect_field_name='next')
+def dashboard_recipe_unpublish(request, id):
+    recipe = Recipe.objects.filter(
+        is_published=True,
+        author=request.user,
+        pk=id,
+    ).first()
+
+    if not recipe:
+        raise Http404
+
+    recipe.is_published = False
+    recipe.save()
+
+    messages.warning(request, 'Your recipe has been unpublished sucessfully!')
+
+    return redirect(reverse('authors:dashboard'))
