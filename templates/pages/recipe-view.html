@@ -3,12 +3,13 @@
 {% block title %}{{ recipe.title }} | {% endblock title %}
 
 {% block content %}
-    {% if recipes.is_published %}
+    {% if recipe.is_published %}
         <div class="main-content main-content-detail container">
             {% include "partials/recipes_base.html" %}
         </div>
 
     {% else %}
+        {% include "partials/messages.html" %}
         <div class="main-content main-content-detail container">
             {% include "partials/recipe_not_published.html" %}
         </div>

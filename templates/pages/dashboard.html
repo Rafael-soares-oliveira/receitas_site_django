@@ -3,16 +3,25 @@
 {% block title %}Dashboard | {% endblock title %}
 
 {% block content %}
+    {% include "partials/messages.html" %}
     <div class="main-content center container">
         <h2>Dashboard {{ request.user.first_name }} {{ request.user.last_name }}</h2>
+        <form action="{% url "authors:dashboard_recipe_create"%}" class="button-create-recipe">
+            <button type="submit">
+                <i class="fas fa-plus"></i> Create recipe
+            </button>
+        </form>
         <div class="authors-dashboard-container">
             <div class="published-container">
                 <h3>Recipes Published</h3>
                 <ul>
                     {% for recipe in recipes_published %}
-                        <li>
+                        <li class="recipe-dashboard-list">
                             <a href="{% url "recipes:recipe" recipe.id %}">{{ recipe.title }}</a>
-                            <p>{{ recipe.update_at }}</p>
+                            <form action="{% url 'authors:dashboard_recipe_delete' recipe.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit"><i class="fas fa-trash"></i> Delete</button>
+                            </form>
                         </li>
                     {% empty %}
                     <li>
@@ -26,8 +35,12 @@
                 <h3>Recipes not yet Published</h3>
                 <ul class="not-published-container">
                     {% for recipe in recipes_not_published %}
-                        <li>
+                        <li class="recipe-dashboard-list">
                             <a href="{% url "authors:recipe_not_published" recipe.id %}">{{ recipe.title }}</a>
+                            <form action="{% url 'authors:dashboard_recipe_delete' recipe.id %}"  method="POST">
+                                {% csrf_token %}
+                                <button type="submit"><i class="fas fa-trash"></i> Delete</button>
+                            </form>
                         </li>
                     {% empty %}
                     <li>

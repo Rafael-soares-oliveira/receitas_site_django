@@ -20,6 +20,7 @@ class RecipeAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         "slug": ('title',)
     }
+    list_per_page = 20
 
 
 admin.site.register(Category, CategoryAdmin)
