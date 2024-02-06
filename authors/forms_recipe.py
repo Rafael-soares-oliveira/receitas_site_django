@@ -57,7 +57,7 @@ class AuthorsRecipeForm(forms.ModelForm):
         description = self.cleaned_data.get('description')
         if len(description) < 15:
             self._my_errors['description'].append(
-                'Please, give more details in the recipe. At least 10 chars')
+                'Please, give more details in the recipe. At least 15 chars')
         return description
 
     def clean_preparation_time(self):

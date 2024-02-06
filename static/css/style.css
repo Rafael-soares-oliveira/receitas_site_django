@@ -459,7 +459,9 @@ img {
 
 /*Recipe not published preview*/
 .recipe-edit-button {
-  text-align: center;
+  justify-content: center;
+  display: flex;
+  gap: var(--spacing-gutter-small);
 }
 
 .recipe-edit-button button {

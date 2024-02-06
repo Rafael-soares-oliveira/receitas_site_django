@@ -43,7 +43,7 @@ class AuthorsTestLogin(AuthorsBaseFunctionalTest):
             By.XPATH,
             '/html/body/main')
 
-        msg_sucess = 'Your are logged!'
+        msg_sucess = f'Your are logged in with {user.username}'
         msg_logged = f'Your are logged in with {user.username}'
         self.assertIn(msg_sucess, form.text)
         self.assertIn(msg_logged, form.text)

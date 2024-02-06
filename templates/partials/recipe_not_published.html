@@ -1,6 +1,12 @@
-<form action="{% url "authors:dashboard_recipe_edit" recipe.id %}" class="recipe-edit-button">
-    <button>Edit Recipe</button>
-</form>
+<div class="recipe-edit-button">
+    <form action="{% url "authors:dashboard_recipe_edit" recipe.id %}">
+        <button>Edit Recipe</button>
+    </form>
+    <form action="{% url "authors:dashboard" %}">
+        <button>Dashboard</button>
+    </form>
+</div>
+
 <div class="main-content main-content-detail container">
     <div class="recipe recipe-list-item">
         <div class="recipe-cover">

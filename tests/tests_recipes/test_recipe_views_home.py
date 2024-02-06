@@ -8,7 +8,7 @@ from unittest.mock import patch
 class RecipeViewsTestHome(RecipeTestModelBase):
     def test_recipes_home_views_is_correct(self):
         view = resolve(reverse('recipes:home'))
-        self.assertIs(view.func, views.home)
+        self.assertIs(view.func.view_class, views.RecipeListViewHome)
 
     def test_recipe_home_view_returns_status_code_200_OK(self):
         response = self.client.get(reverse('recipes:home'))
@@ -24,7 +24,7 @@ class RecipeViewsTestHome(RecipeTestModelBase):
 
     def test_recipe_home_view_returns_404_if_no_recipes_found(self):
         response = self.client.get(
-            reverse('recipes:recipe', kwargs={'id': 10000})
+            reverse('recipes:recipe', kwargs={'pk': 10000})
         )
         self.assertEqual(response.status_code, 404)
 

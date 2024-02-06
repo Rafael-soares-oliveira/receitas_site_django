@@ -20,6 +20,6 @@ class RecipeViewsTestDetail(RecipeTestModelBase):
     def test_recipe_detail_returns_404_if_ispublished_none(self):
         recipe = self.make_recipe(is_published=False)
         response = self.client.get(reverse(
-            'recipes:recipe', kwargs={'id': recipe.id})  # type:ignore
+            'recipes:recipe', kwargs={'pk': recipe.pk})  # type:ignore
         )
         self.assertEqual(response.status_code, 404)

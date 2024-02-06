@@ -1,5 +1,4 @@
 from django.urls import path
-from recipes import views as recipes
 from . import views
 
 app_name = 'authors'
@@ -9,23 +8,25 @@ urlpatterns = [
      path('register/create', views.register_create, name='register_create'),
      path('login/', views.login_view, name='login'),
      path('login/acess/', views.login_create, name='login_create'),
-     path('', recipes.home, name='home'),
      path('logout/', views.logout_view, name='logout'),
-     path('dashboard/', views.dashboard, name='dashboard'),
 
-     path('dashboard/recipe/<int:id>/edit/', views.dashboard_recipe_edit,
+     path('dashboard/', views.Dashboard.as_view(), name='dashboard'),
+
+     path('dashboard/recipe/<int:id>/edit/',
+          views.DashboardRecipeEdit.as_view(),
           name='dashboard_recipe_edit'),
 
-     path('dashboard/recipe/create/', views.dashboard_recipe_create,
+     path('dashboard/recipe/create/', views.DashboardRecipeEdit.as_view(),
           name='dashboard_recipe_create'),
 
-     path('dashboard/recipe/<int:id>/delete/', views.dashboard_recipe_delete,
+     path('dashboard/recipe/delete/', views.DashboardRecipeDelete.as_view(),
           name='dashboard_recipe_delete'),
 
-     path('dashboard/recipe/<int:id>/', views.recipe_not_published,
+     path('dashboard/recipe/<int:id>/',
+          views.DashboardRecipeUnpublishView.as_view(),
           name='recipe_not_published'),
 
-     path('dashboard/recipe/<int:id>/unpublish',
-          views.dashboard_recipe_unpublish,
+     path('dashboard/recipe/unpublish',
+          views.DashboardRecipeUnpublish.as_view(),
           name='dashboard_recipe_unpublish'),
 ]

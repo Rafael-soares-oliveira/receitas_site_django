@@ -18,8 +18,9 @@
                     {% for recipe in recipes_published %}
                         <li class="recipe-dashboard-list">
                             <a href="{% url "recipes:recipe" recipe.id %}">{{ recipe.title }}</a>
-                            <form class="form-unpublish" action="{% url 'authors:dashboard_recipe_unpublish' recipe.id %}" method="POST">
+                            <form class="form-unpublish" action="{% url 'authors:dashboard_recipe_unpublish' %}" method="POST">
                                 {% csrf_token %}
+                                <input type="hidden" name="id" value="{{ recipe.id }}">
                                 <button type="submit"><i class="fas fa-times"></i> Unpublish</button>
                             </form>
                         </li>
@@ -37,8 +38,9 @@
                     {% for recipe in recipes_not_published %}
                         <li class="recipe-dashboard-list">
                             <a href="{% url "authors:recipe_not_published" recipe.id %}">{{ recipe.title }}</a>
-                            <form class="form-delete" action="{% url 'authors:dashboard_recipe_delete' recipe.id %}"  method="POST">
+                            <form class="form-delete" action="{% url 'authors:dashboard_recipe_delete' %}"  method="POST">
                                 {% csrf_token %}
+                                <input type="hidden" name="id" value="{{ recipe.id }}">
                                 <button type="submit"><i class="fas fa-trash"></i> Delete</button>
                             </form>
                         </li>
