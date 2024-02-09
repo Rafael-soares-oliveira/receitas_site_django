@@ -1,0 +1,75 @@
+###############################################################################
+# Replace
+# project_django to the name of the gunicorn file you want
+# rafael to your user name
+# app_repo to the folder name of your project
+# recipes_site to the folder name where you find a file called wsgi.py
+#
+###############################################################################
+# Criando o arquivo project_django.socket
+sudo nano /etc/systemd/system/project_django.socket
+
+###############################################################################
+# Conteúdo do arquivo
+[Unit]
+Description=gunicorn blog socket
+
+[Socket]
+ListenStream=/run/project_django.socket
+
+[Install]
+WantedBy=sockets.target
+
+###############################################################################
+# Criando o arquivo project_django.service
+sudo nano /etc/systemd/system/project_django.service
+
+###############################################################################
+# Conteúdo do arquivo
+[Unit]
+Description=Gunicorn daemon (You can change if you want)
+Requires=project_django.socket
+After=network.target
+
+[Service]
+User=rafael
+Group=www-data
+Restart=on-failure
+EnvironmentFile=/home/rafael/app_repo/.env
+WorkingDirectory=/home/rafael/app_repo
+# --error-logfile --enable-stdio-inheritance --log-level and --capture-output
+# are all for debugging purposes.
+ExecStart=/home/rafael/app_repo/venv/bin/gunicorn \
+          --error-logfile /home/rafael/app_repo/gunicorn-error-log \
+          --enable-stdio-inheritance \
+          --log-level "debug" \
+          --capture-output \
+          --access-logfile - \
+          --workers 6 \
+          --bind unix:/run/project_django.socket \
+          recipes_site.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+###############################################################################
+# Ativando
+sudo systemctl start project_django.socket
+sudo systemctl enable project_django.socket
+
+# Checando
+sudo systemctl status project_django.socket
+curl --unix-socket /run/project_django.socket localhost
+sudo systemctl status project_django
+
+# Restarting
+sudo systemctl restart project_django.service
+sudo systemctl restart project_django.socket
+sudo systemctl restart project_django
+
+# After changing something
+sudo systemctl daemon-reload
+
+# Debugging
+sudo journalctl -u project_django.service
+sudo journalctl -u project_django.socket
