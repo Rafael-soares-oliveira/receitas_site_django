@@ -23,7 +23,7 @@ server {
   # ATTENTION: /home/rafael/app_repo
   location /static {
     autoindex on;
-    alias /home/rafael/app_repo;
+    alias /home/rafael/app_repo/static;
   }
 
   # ATTENTION: /home/rafael/app_repo/media 
