@@ -152,4 +152,5 @@ MESSAGE_TAGS = {
 # Django Debu Toolbar
 INTERNAL_IPS = [
     '127.0.0.1',
+    '192.168.0.102',
 ]
