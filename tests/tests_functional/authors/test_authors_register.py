@@ -15,10 +15,17 @@ class AuthorsTestRegister(AuthorsBaseFunctionalTest):
             text=['', 'User', 'UserUser', 'user', 'user@email.com', 'P@ss4656',
                   'P@ss4656']):
 
+        # Acess the homepage
         self.browser.get(self.live_server_url)
+
+        # Click on the toggle menu
         self.browser.find_element(
-                By.XPATH,
-                '/html/body/header/div[1]/form[1]/button').click()
+            By.XPATH,
+            '/html/body/nav/label').click()
+        # Click on the register button
+        self.browser.find_element(
+            By.XPATH,
+            '/html/body/nav/ul/li[1]/form/button').click()
 
         for i in range(1, 7):
             self.browser.find_element(
@@ -35,8 +42,6 @@ class AuthorsTestRegister(AuthorsBaseFunctionalTest):
         email_error = 'Informe um endereço de email válido'
 
         self.fill_form_dummy_data_and_send(text=text_input)
-
-        self.browser.get(self.live_server_url + '/authors/register')
 
         for i in range(1, 7):
             if i == 4:

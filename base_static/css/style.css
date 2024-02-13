@@ -92,9 +92,9 @@ img {
   color: var(--color-white);
   text-decoration: none;
   display: flex;
-  margin-right: 50%;
   max-width: 144rem;
   padding: var(--spacing-gutter-small) var(--spacing-gutter-medium);
+  gap: 1rem;
 }
 
 #menu-show {

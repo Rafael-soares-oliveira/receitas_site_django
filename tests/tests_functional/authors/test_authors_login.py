@@ -11,10 +11,14 @@ class AuthorsTestLogin(AuthorsBaseFunctionalTest):
         # Acess the homepage
         self.browser.get(self.live_server_url)
 
+        # Click on the toggle menu
+        self.browser.find_element(
+            By.XPATH,
+            '/html/body/nav/label').click()
         # Click on the login button
         self.browser.find_element(
             By.XPATH,
-            '/html/body/header/div[1]/form[2]/button').click()
+            '/html/body/nav/ul/li[2]/form/button').click()
 
     def test_login_sucessfully(self):
         # User credentials
