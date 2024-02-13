@@ -125,6 +125,7 @@ class Dashboard(View):
             is_published=True,
             author=request.user
             )
+
         return recipes_published
 
     def get_recipe_not_published(self, request):
@@ -139,6 +140,8 @@ class Dashboard(View):
         return render(request, 'pages/dashboard.html', context={
             'recipes_published': recipes_published,
             'recipes_not_published': recipes_not_published,
+            'number_recipes_published': len(recipes_published),
+            'number_recipes_not_published': len(recipes_not_published),
             })
 
     def post(self, request):

@@ -1,32 +1,43 @@
-<header class="header-container">
-
-    {% if not request.user.is_authenticated %}
-    <div class='button-login-logout'>
-        <form action="{% url 'authors:register' %}" method='POST'>
-            {% csrf_token %}
-            <button type="submit">Register</button>
-        </form>
-        <form action="{% url 'authors:login' %}" method='POST'>
-            {% csrf_token %}
-            <button type="submit">Login</button>
-        </form>
-    </div>
-
-    {% else %}
-    <div class='button-login-logout'>
-        <form action="{% url "authors:dashboard" %}" method='POST'>
-            {% csrf_token %}
-            <button type="submit">{{ request.user.first_name }} ({{ request.user.username }})</button>
-        </form>
-
-        <form action="{% url 'authors:logout' %}" method='POST'>
-            {% csrf_token %}
-            <button type="submit">Logout</button>
-        </form>
-    </div>
-    {% endif %}
-
-    <div class="header container">
+<nav class='toggle-menu'>
+    <label for="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </label>
+    <input type="checkbox" id="menu-toggle"/>
+    <ul id="menu-show">
+        {% if not request.user.is_authenticated %}
+        <li>
+            <form action="{% url 'authors:register' %}" method='POST'>
+                {% csrf_token %}
+                <button type="submit">Register</button>
+            </form>
+        </li>
+        <li>
+            <form action="{% url 'authors:login' %}" method='POST'>
+                {% csrf_token %}
+                <button type="submit">Login</button>
+            </form>
+        </li>
+        {% else %}
+        <li>
+            <span>Logged as {{ request.user.first_name }} ({{ request.user.username }})</span>
+        </li>
+        <li>
+            <form action="{% url "authors:dashboard" %}" method='POST'>
+                {% csrf_token %}
+                <button type="submit">Dashboard</button>
+            </form>
+        </li>
+        <li>
+            <form action="{% url 'authors:logout' %}" method='POST'>
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+<header class="header">
+    <div>
         <a class='header-logo' href="{% url "recipes:home" %}">
             <i class="fas fa-utensils"></i>
             <span>Recipes</span>

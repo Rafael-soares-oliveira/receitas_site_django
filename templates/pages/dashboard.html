@@ -13,7 +13,7 @@
         </form>
         <div class="authors-dashboard-container">
             <div class="published-container">
-                <h3>Recipes Published</h3>
+                <h3>Recipes Published - {{ number_recipes_published }}</h3> 
                 <ul>
                     {% for recipe in recipes_published %}
                         <li class="recipe-dashboard-list">
@@ -33,7 +33,7 @@
             </div>
 
             <div>
-                <h3>Recipes not yet Published</h3>
+                <h3>Recipes not yet Published - {{ number_recipes_not_published }}</h3>
                 <ul class="not-published-container">
                     {% for recipe in recipes_not_published %}
                         <li class="recipe-dashboard-list">
