@@ -7,7 +7,7 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
 class AuthorsBaseFunctionalTest(StaticLiveServerTestCase, RecipeMixin):
     def setUp(self) -> None:
-        self.browser = launchBrowser()
+        self.browser = launchBrowser('--headless')
         return super().setUp()
 
     def sleep(self, seconds=6):

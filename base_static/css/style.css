@@ -329,6 +329,14 @@ img {
   margin: var(--spacing-gutter-large);
 }
 
+.tags {
+  text-align: center;
+}
+
+.tags a:visited {
+  color: #0f66f1;
+}
+
 .center {
   text-align: center;
 }
