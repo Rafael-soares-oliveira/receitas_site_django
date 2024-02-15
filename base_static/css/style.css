@@ -151,6 +151,10 @@ img {
   left: 5px;
 }
 
+.button-show-menu-visible:hover {
+  scale: 1.1;
+}
+
 .button-close-menu {
   position: absolute;
   top: 1rem;
@@ -161,6 +165,10 @@ img {
   font-size: 2rem;
   z-index: 3;
   cursor: pointer;
+}
+
+.button-close-menu:hover {
+  scale: 1.2;
 }
 
 .menu-nav {
