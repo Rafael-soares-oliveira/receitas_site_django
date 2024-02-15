@@ -1,4 +1,5 @@
 from django.http import Http404
+from django.shortcuts import render
 from recipes.models import Recipe
 from django.db.models import Q
 from utils.make_pagination import make_pagination
@@ -180,3 +181,7 @@ class RecipeListViewTag(RecipeListViewBase):
         })
 
         return ctx
+
+
+def menu(request):
+    return render(request, 'partials/menu.html')

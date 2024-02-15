@@ -13,9 +13,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 from django.contrib.messages import constants
+from dotenv import load_dotenv
 
 if os.environ.get('DEBUG', None) is None:
-    from dotenv import load_dotenv
     load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

@@ -18,4 +18,6 @@ urlpatterns = [
           ),
      path('recipes/tags/<slug:slug>/', views.RecipeListViewTag.as_view(),
           name='tag'),
+
+     path('menu/', views.menu, name='menu')
 ]

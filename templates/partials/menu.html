@@ -1,0 +1,38 @@
+<button class="button-show-menu button-show-menu-visible">
+    <i class="fas fa-bars"></i>
+    <span class="hidden-text">Show menu</span>
+</button>
+    
+<div class="menu-container menu-hidden">
+    <button class="button-close-menu button-close-menu-visible">
+      <i class="fas fa-times-circle"></i>
+      <span class="hidden-text">Close menu</span>
+    </button>
+
+    <div class="menu-content">
+      <nav class="menu-nav">
+        {% if not request.user.is_authenticated %}
+            <a href="{% url 'recipes:home' %}">Home</a>
+            <form action="{% url 'authors:register' %}" method='POST'>
+                {% csrf_token %}
+                <button type="submit">Register</button>
+            </form>
+            <form action="{% url 'authors:login' %}" method='POST'>
+                {% csrf_token %}
+                <button type="submit">Login</button>
+            </form>
+        {% else %}
+            <span>{{ request.user.first_name }} ({{ request.user.username }})</span>
+            <a href="{% url 'recipes:home' %}">Home</a>
+            <form action="{% url "authors:dashboard" %}" method='POST'>
+                {% csrf_token %}
+                <button type="submit">Dashboard</button>
+            </form>
+            <form action="{% url 'authors:logout' %}" method='POST'>
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        {% endif %}
+      </nav>
+    </div>
+</div>
