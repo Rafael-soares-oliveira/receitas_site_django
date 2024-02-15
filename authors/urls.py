@@ -1,6 +1,5 @@
 from django.urls import path
 from . import views
-
 app_name = 'authors'
 
 urlpatterns = [
@@ -29,4 +28,7 @@ urlpatterns = [
      path('dashboard/recipe/unpublish',
           views.DashboardRecipeUnpublish.as_view(),
           name='dashboard_recipe_unpublish'),
+
+     path('profile/<str:first_name>/', views.ProfileView.as_view(),
+          name='profile')
 ]
