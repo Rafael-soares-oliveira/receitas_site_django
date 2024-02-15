@@ -19,7 +19,7 @@
             </form>
             <form action="{% url 'authors:login' %}" method='POST'>
                 {% csrf_token %}
-                <button type="submit">Login</button>
+                <button id='login-button' type="submit">Login</button>
             </form>
         {% else %}
             <span>{{ request.user.first_name }} ({{ request.user.username }})</span>

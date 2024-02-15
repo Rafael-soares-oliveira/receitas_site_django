@@ -6,36 +6,41 @@ import pytest
 
 @pytest.mark.functional_test
 class AuthorsTestLogout(AuthorsBaseFunctionalTest):
-    def login(self):
+    def test_logout_sucessful(self):
         User.objects.create_user(username='user', password='P@ss4656')
-        # Acess the homepage
-        self.browser.get(self.live_server_url)
+        # Acess the login page
+        self.browser.get(self.live_server_url + '/authors/login/')
 
-        # Click on the login button
-        self.browser.find_element(
-            By.XPATH,
-            '/html/body/header/div[1]/form[2]/button').click()
-
-        self.browser.find_element(
+        # Insert into username field
+        username = self.browser.find_element(
             By.XPATH,
             '/html/body/main/div[2]/form/div[1]/div[1]/input'
-            ).send_keys('user')
-
+            )
+        username.send_keys('user')
         # Insert into password field
-        self.browser.find_element(
+        password = self.browser.find_element(
             By.XPATH,
             '/html/body/main/div[2]/form/div[1]/div[2]/input'
-            ).send_keys('P@ss4656')
+            )
+        password.send_keys('P@ss4656')
 
         # Click on the send button
         self.browser.find_element(
             By.XPATH,
             '/html/body/main/div[2]/form/div[2]/div/button').click()
 
-    def logout_sucessful(self):
-        self.login()
-        # Click on logout button
         self.browser.find_element(
             By.XPATH,
-            '/html/body/header/div[1]/form[2]/button').click()
-        self.sleep()
+            '/html/body/main/div/form/button').click()
+
+        username = self.browser.find_element(
+            By.XPATH,
+            '/html/body/main/div[2]/form/div[1]/div[1]/input'
+            )
+        username.send_keys('user')
+        # Insert into password field
+        password = self.browser.find_element(
+            By.XPATH,
+            '/html/body/main/div[2]/form/div[1]/div[2]/input'
+            )
+        password.send_keys('P@ss4656')

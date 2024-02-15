@@ -16,16 +16,7 @@ class AuthorsTestRegister(AuthorsBaseFunctionalTest):
                   'P@ss4656']):
 
         # Acess the homepage
-        self.browser.get(self.live_server_url)
-
-        # Click on the toggle menu
-        self.browser.find_element(
-            By.XPATH,
-            '/html/body/nav/label').click()
-        # Click on the register button
-        self.browser.find_element(
-            By.XPATH,
-            '/html/body/nav/ul/li[1]/form/button').click()
+        self.browser.get(self.live_server_url + '/authors/register/')
 
         for i in range(1, 7):
             self.browser.find_element(
@@ -93,7 +84,7 @@ class AuthorsTestRegister(AuthorsBaseFunctionalTest):
         self.assertIn(msg_error, username.text)
 
     def test_register_created_sucessfully(self):
-        msg = 'Your user is created, please log in.'
+        msg = 'Your user is created, please login.'
         self.fill_form_dummy_data_and_send()
 
         msg_sucess = self.browser.find_element(

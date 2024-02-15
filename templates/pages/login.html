@@ -15,6 +15,10 @@
             {{ request.user.username }}. 
             <a href="{% url 'authors:dashboard' %}">See your recipes</a>.
         </div>
+        <form class="logged-logout" action="{% url 'authors:logout' %}" method='POST'>
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
         {% endif %}
     </div>
 
