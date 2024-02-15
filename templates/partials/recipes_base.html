@@ -13,7 +13,7 @@
         <div class="recipe-author">
             <span>
                 <i class="fas fa-user"></i>
-                {{ recipe.author.first_name }} {{ recipe.author.last_name }}
+                <a href="{% url "authors:profile" recipe.author.profile.id %}">{{ recipe.author.first_name }} {{ recipe.author.last_name }}</a>
             </span>
             <span>
                 <i class="fas fa-calendar-alt"></i>

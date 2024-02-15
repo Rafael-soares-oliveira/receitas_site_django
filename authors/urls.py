@@ -29,6 +29,6 @@ urlpatterns = [
           views.DashboardRecipeUnpublish.as_view(),
           name='dashboard_recipe_unpublish'),
 
-     path('profile/<str:first_name>/', views.ProfileView.as_view(),
+     path('profile/<int:id>/', views.ProfileView.as_view(),
           name='profile')
 ]

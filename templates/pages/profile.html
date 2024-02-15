@@ -1,11 +1,10 @@
 {% extends "partials/base.html" %}
 
-{% block title %}Profile {{ request.user.first_name }} | {% endblock title %}
+{% block title %}Profile {{ profile.authors.id }} | {% endblock title %}
 
 {% block content %}
         <div class="main-content main-content-detail container center">
-            <h2>Profile {{ request.user.first_name }} {{ request.user.last_name }}</h2>
-            <h3>{{ request.user.username }}</h3>
-            <p>{{ request.user.profile.bio }}</p>
+            <h2>Profile {{ profile.author.first_name }} {{ profile.author.last_name }}</h2>
+            <p>{{ profile.bio }}</p>
         </div>
 {% endblock content %}

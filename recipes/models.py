@@ -27,13 +27,13 @@ class Recipe(models.Model):
     update_at = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=False)
     cover = models.ImageField(
-        upload_to='media/covers/%Y/%m/%d', blank=True,
+        upload_to='media/covers/%Y/%m/%d', blank=False,
         default='tests/tests_recipes/imagem_temporaria.jpg')
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True,
         default=None)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True, default='')
 
     def __str__(self) -> str:
         return self.title
