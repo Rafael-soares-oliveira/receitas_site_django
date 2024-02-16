@@ -1,0 +1,20 @@
+{% extends "partials/base.html" %}
+
+{% block title %}Profile {{ request.user.first_name }} | {% endblock title %}
+
+{% block content %}
+        <div class="main-content main-content-detail container center">
+            <h2>Profile Edit</h2>
+        </div>
+        <div class="form-content form-content-grid">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="form-content form-content-grid">
+                    <div class="form-group" aria-label='Button to confirm the registration'>
+                        <button type="submit">Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+{% endblock content %}

@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+
 app_name = 'authors'
 
 urlpatterns = [
@@ -30,5 +31,16 @@ urlpatterns = [
           name='dashboard_recipe_unpublish'),
 
      path('profile/<int:id>/', views.ProfileView.as_view(),
-          name='profile')
+          name='profile'),
+
+     path('myprofile/', views.MyProfileView.as_view(),
+          name="myprofile"),
+
+     path('myprofile/edit/', views.MyProfileEditView.as_view(),
+          name="myprofile_edit"),
+
+     path('myprofile/edit/password/',
+          views.PasswordsChangeView.as_view(
+              template_name='pages/change-password.html'),
+          name='myprofile_edit_password')
 ]

@@ -11,9 +11,9 @@
 
         {% if request.user.is_authenticated %}
         <div class="logged">
-            Your are logged in with 
-            {{ request.user.username }}. 
-            <a href="{% url 'authors:dashboard' %}">See your recipes</a>.
+            Your are logged in with {{ request.user.username }}. 
+            <a href="{% url 'authors:dashboard' %}">See your recipes</a> or
+            <a href="{% url 'authors:myprofile' %}">See your profile</a>.
         </div>
         <form class="logged-logout" action="{% url 'authors:logout' %}" method='POST'>
             {% csrf_token %}

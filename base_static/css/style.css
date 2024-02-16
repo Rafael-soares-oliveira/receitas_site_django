@@ -583,6 +583,33 @@ img {
   margin-top: var(--spacing-gutter-small);
 }
 
+.form-content-read {
+  margin: var(--spacing-gutter-small) auto;
+  max-width: 70rem;
+  margin-bottom: var(--spacing-gutter-medium);
+}
+
+.form-content-read h2 {
+  font-size: 3rem;
+  color: var(--color-primary-dark);
+}
+
+.form-content-read label, .form-content-read .help-text, .errorlist {
+  display: block;
+  margin: 0.5rem 0;
+  list-style-type: none;
+}
+
+.form-content-read label {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.form-content-read input {
+  background: var(--color-gray-0);
+  padding: 0.3rem;
+}
+
 /* Messages */
 .message {
   padding: 1rem;
