@@ -13,7 +13,7 @@
             </a>
         </div>
         <div class="recipe-author">
-            <span>
+            <span class="author-name">
                 <i class="fas fa-user"></i>
                 <a href="{% url "authors:profile" recipe.author.profile.id %}">{{ recipe.author.first_name }} {{ recipe.author.last_name }}</a>
             </span>
@@ -69,9 +69,9 @@
             <p class="tags">
                 Tags:
                 {% for tag in recipe.tags.all %}
-                    <a href="{% url 'recipes:tag' tag.slug %}">
+                    <a href="{% url 'recipes:tag' tag.slug %}" class='tag-link'>
                         {{ tag.name }}
-                    </a>
+                    </a>,
                 {% endfor %}
             </p>
         {% endif %}

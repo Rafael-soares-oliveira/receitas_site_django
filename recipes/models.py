@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.forms import ValidationError
 from django.utils.text import slugify
 from tag.models import Tag
+from django.utils.translation import gettext as _
 
 
 class Category(models.Model):
@@ -12,23 +13,31 @@ class Category(models.Model):
     def __str__(self) -> str:
         return self.name
 
+    class Meta:
+        verbose_name = _('Category')
+        verbose_name_plural = _('Categories')
+
 
 class Recipe(models.Model):
-    title = models.CharField(max_length=65)
-    description = models.CharField(max_length=165)
+    title = models.CharField(max_length=65, verbose_name=_('Title'))
+    description = models.CharField(
+        max_length=165, verbose_name=_('Description'))
     slug = models.SlugField(unique=True, null=True)
-    preparation_time = models.IntegerField()
-    preparation_time_unit = models.CharField(max_length=65)
-    servings = models.IntegerField()
-    servings_unit = models.CharField(max_length=65)
-    preparation_step = models.TextField()
+    preparation_time = models.IntegerField(verbose_name=_('Preparation Time'))
+    preparation_time_unit = models.CharField(
+        max_length=65, verbose_name=_('Preparation Time Unit'))
+    servings = models.IntegerField(verbose_name=_('Servings'))
+    servings_unit = models.CharField(
+        max_length=65, verbose_name=_('Servings Unit'))
+    preparation_step = models.TextField(verbose_name=_('Preparation Step'))
     preparation_step_is_html = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=False)
     cover = models.ImageField(
         upload_to='media/covers/%Y/%m/%d', blank=False,
-        default='tests/tests_recipes/imagem_temporaria.jpg')
+        default='tests/tests_recipes/imagem_temporaria.jpg',
+        verbose_name=_('Cover'))
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True,
         default=None)
@@ -51,8 +60,12 @@ class Recipe(models.Model):
         if recipe_from_db:
             if recipe_from_db.pk != self.pk:
                 error_messages['title'].append(
-                    'Found recipes with the same title'
+                    _('Found recipes with the same title')
                 )
 
         if error_messages:
             raise ValidationError(error_messages)
+
+    class Meta:
+        verbose_name = _('Recipe')
+        verbose_name_plural = _('Recipes')

@@ -2,10 +2,11 @@ from django.db import models
 import string
 from random import SystemRandom
 from django.utils.text import slugify
+from django.utils.translation import gettext as _
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, verbose_name=_('Name'))
     slug = models.SlugField(unique=True)
 
     def save(self, *args, **kwargs):
@@ -19,6 +20,5 @@ class Tag(models.Model):
             self.slug = slugify(f'{self.name}-{rand_letters}')
         return super().save(*args, **kwargs)
 
-# Create your models here.
     def __str__(self):
         return self.name

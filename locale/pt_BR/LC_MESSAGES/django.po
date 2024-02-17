@@ -1,4 +1,4 @@
-# SOME DESCRIPTIVE TITLE.
+# SOME DESCRIPTIVE TITLE.""fuzzy
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-16 20:45-0300\n"
+"POT-Creation-Date: 2024-02-17 02:57-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,220 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\recipes\views.py:70
+#: .\authors\forms.py:25 .\authors\forms.py:152
+msgid "Type your first name"
+msgstr "Digite seu primeiro nome"
+
+#: .\authors\forms.py:27
+msgid "First Name"
+msgstr "Primeiro nome"
+
+#: .\authors\forms.py:29 .\authors\forms.py:40 .\authors\forms.py:56
+#: .\authors\forms.py:69 .\authors\forms.py:80 .\authors\forms.py:97
+#: .\authors\forms.py:156 .\authors\forms.py:167 .\authors\forms.py:178
+msgid "This field must not be empty"
+msgstr "Este campo não pode estar vazio"
+
+#: .\authors\forms.py:36 .\authors\forms.py:163
+msgid "Type your last name"
+msgstr "Digite seu sobrenome"
+
+#: .\authors\forms.py:38
+msgid "Last Name"
+msgstr "Sobrenome"
+
+#: .\authors\forms.py:47 .\authors\forms.py:128
+msgid "Type your username"
+msgstr "Digite seu usuário"
+
+#: .\authors\forms.py:50
+msgid ""
+"Username must have letters, numbers or one of those @.+-_. The length should "
+"be between 4 and 16 characters."
+msgstr ""
+"Usuário deve ter letras, números ou um desses @.+-_. Deve ter entre 4 e 16 "
+"caracteres."
+
+#: .\authors\forms.py:52 .\authors\forms.py:130
+msgid "Username"
+msgstr "Usuário"
+
+#: .\authors\forms.py:57
+msgid "Username must have at least 4 characters"
+msgstr "Usuário deve ter pelo menos 4 caracteres"
+
+#: .\authors\forms.py:58
+msgid "Username must have a maximum of 16 characters"
+msgstr "Usuário deve ter no máximo 16 caracteres"
+
+#: .\authors\forms.py:65 .\authors\forms.py:174
+msgid "Type your email. Ex: email@email.com"
+msgstr "Digite seu email. Ex: email@email.com"
+
+#: .\authors\forms.py:76 .\authors\forms.py:134
+msgid "Type your password"
+msgstr "Digite sua senha"
+
+#: .\authors\forms.py:78 .\authors\forms.py:136
+msgid "Password"
+msgstr "Senha"
+
+#: .\authors\forms.py:83
+msgid ""
+"Password must have at least one uppercase letter, one lowercase letter and "
+"one number. The length should be at least 8 characters."
+msgstr ""
+"Senha deve ter pelo menos uma letra maiúscula, uma letra minúscula e um "
+"número. Deve ter pelo menos 8 caracteres."
+
+#: .\authors\forms.py:93
+msgid "Repeat your password"
+msgstr "Repita sua senha"
+
+#: .\authors\forms.py:95
+msgid "Confirm password"
+msgstr "Confirmar Senha"
+
+#: .\authors\forms.py:107 .\authors\forms.py:188
+msgid "User e-mail is already in use"
+msgstr "Email já está em uso"
+
+#: .\authors\forms.py:118 .\authors\forms.py:119
+msgid "Passwords do not match!"
+msgstr "Senhas não coincidem!"
+
+#: .\authors\forms.py:154 .\authors\forms.py:206
+msgid "First name"
+msgstr "Primeiro nome"
+
+#: .\authors\forms.py:165 .\authors\forms.py:213
+msgid "Last name"
+msgstr "Sobrenome"
+
+#: .\authors\forms.py:176 .\authors\forms.py:220
+msgid "Email"
+msgstr "Email"
+
+#: .\authors\forms_recipe.py:31 .\recipes\models.py:29
+#: .\templates\partials\recipe_not_published.html:41
+#: .\templates\partials\recipes_base.html:40
+msgid "Servings"
+msgstr "Porções"
+
+#: .\authors\forms_recipe.py:32
+msgid "Persons"
+msgstr "Pessoas"
+
+#: .\authors\forms_recipe.py:37
+msgid "Minutes"
+msgstr "Minutos"
+
+#: .\authors\forms_recipe.py:38
+msgid "Hours"
+msgstr "Horas"
+
+#: .\authors\forms_recipe.py:54
+msgid "Must have at least 5 chars."
+msgstr "Deve ter pelo menos 5 caracteres."
+
+#: .\authors\forms_recipe.py:61
+msgid "Please, give more details. At least 15 chars"
+msgstr "Por favor, dê mais detalhes. Pelo menos 15 caracteres"
+
+#: .\authors\forms_recipe.py:68 .\authors\forms_recipe.py:75
+msgid "Must be a positive number."
+msgstr "Deve ser um número positivo."
+
+#: .\authors\models.py:10
+msgid "Author"
+msgstr "Autor"
+
+#: .\authors\models.py:14 .\templates\pages\my_profile.html:7
+#: .\templates\pages\profile.html:3 .\templates\pages\profile.html:7
+#: .\templates\pages\profile_edit.html:3
+msgid "Profile"
+msgstr "Perfil"
+
+#: .\authors\models.py:15
+msgid "Profiles"
+msgstr "Perfis"
+
+#: .\authors\views\all.py:30
+msgid "Your user is created, please log in."
+msgstr "Seu usuário foi criado, por favor acesse."
+
+#: .\authors\views\all.py:61
+msgid "Username or password incorrect!"
+msgstr "Usuário ou senha incorreto!"
+
+#: .\authors\views\all.py:63
+msgid "Invalid username or password"
+msgstr "Usuário ou senha inválido"
+
+#: .\authors\views\dashboard_recipe.py:56
+msgid "Your recipe has been saved sucessfully!"
+msgstr "Sua receita foi registrada!"
+
+#: .\authors\views\dashboard_recipe.py:74
+msgid "Your recipe has been delete sucessfully!"
+msgstr "Sua receita foi excluída!"
+
+#: .\authors\views\dashboard_recipe.py:96
+msgid "Your recipe has been unpublished sucessfully!"
+msgstr "Sua receita foi despublicada!"
+
+#: .\recipes\models.py:17 .\recipes\views.py:70
 msgid "Category"
 msgstr "Categoria"
+
+#: .\recipes\models.py:18
+msgid "Categories"
+msgstr "Categorias"
+
+#: .\recipes\models.py:22
+msgid "Title"
+msgstr "Título"
+
+#: .\recipes\models.py:24
+msgid "Description"
+msgstr "Descrição"
+
+#: .\recipes\models.py:26
+msgid "Preparation Time"
+msgstr "Tempo de Preparo"
+
+#: .\recipes\models.py:28
+msgid "Preparation Time Unit"
+msgstr "Unidade do Tempo de Preparo"
+
+#: .\recipes\models.py:31
+msgid "Servings Unit"
+msgstr "Unidade das Porções"
+
+#: .\recipes\models.py:32
+msgid "Preparation Step"
+msgstr "Passos do Preparo"
+
+#: .\recipes\models.py:40
+msgid "Cover"
+msgstr "Capa"
+
+#: .\recipes\models.py:63
+msgid "Found recipes with the same title"
+msgstr "Encontrado receitas com o mesmo título"
+
+#: .\recipes\models.py:70
+msgid "Recipe"
+msgstr "Receitas"
+
+#: .\recipes\models.py:71 .\templates\partials\base.html:8
+#: .\templates\partials\header.html:6
+msgid "Recipes"
+msgstr "Receitas"
+
+#: .\tag\models.py:9
+msgid "Name"
+msgstr "Nome"
 
 #: .\templates\pages\change-password.html:3
 #: .\templates\pages\change-password.html:7
@@ -93,24 +304,19 @@ msgstr "Veja seu perfil"
 msgid "Logout"
 msgstr "Sair"
 
-#: .\templates\pages\my_profile.html:4 .\templates\partials\menu.html:28
+#: .\templates\pages\my_profile.html:3 .\templates\partials\menu.html:28
 msgid "My Profile"
 msgstr "Meu perfil"
 
-#: .\templates\pages\my_profile.html:8 .\templates\pages\profile.html:4
-#: .\templates\pages\profile.html:8 .\templates\pages\profile_edit.html:4
-msgid "Profile"
-msgstr "Perfil"
-
-#: .\templates\pages\my_profile.html:17
+#: .\templates\pages\my_profile.html:16
 msgid "Edit"
 msgstr "Editar"
 
-#: .\templates\pages\profile_edit.html:8
+#: .\templates\pages\profile_edit.html:7
 msgid "Profile Edit"
 msgstr "Editar Perfil"
 
-#: .\templates\pages\profile_edit.html:16 .\templates\partials\forms.html:31
+#: .\templates\pages\profile_edit.html:15 .\templates\partials\forms.html:31
 msgid "Send"
 msgstr "Enviar"
 
@@ -139,10 +345,6 @@ msgstr "Resultados encontrados para:"
 msgid "No recipes found here!"
 msgstr "Não há receitas!"
 
-#: .\templates\partials\base.html:8 .\templates\partials\header.html:6
-msgid "Recipes"
-msgstr "Receitas"
-
 #: .\templates\partials\footer.html:4
 msgid "By"
 msgstr "Por"
@@ -168,11 +370,6 @@ msgstr "Editar Receita"
 msgid "Preparation"
 msgstr "Preparo"
 
-#: .\templates\partials\recipe_not_published.html:41
-#: .\templates\partials\recipes_base.html:40
-msgid "Servings"
-msgstr "Porções"
-
 #: .\templates\partials\recipe_not_published.html:47
 #: .\templates\partials\recipes_base.html:57
 msgid "Directions"
@@ -182,6 +379,6 @@ msgstr "Modo de Fazer"
 msgid "Read More..."
 msgstr "Veja Mais..."
 
-#: .\templates\partials\search.html:3
+#: .\templates\partials\search.html:4
 msgid "Search recipe"
 msgstr "Pesquisar receita"

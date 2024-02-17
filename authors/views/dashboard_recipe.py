@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.utils.translation import gettext as _
 
 
 @method_decorator(
@@ -52,7 +53,7 @@ class DashboardRecipeEdit(View):
             recipe.save()
 
             messages.success(
-                request, 'Your recipe has been saved sucessfully!')
+                request, _('Your recipe has been saved sucessfully!'))
             return render(request, 'pages/recipe-view.html',
                           context={
                               'recipe': recipe,
@@ -70,7 +71,7 @@ class DashboardRecipeDelete(DashboardRecipeEdit):
         recipe = self.get_recipe(self.request.POST.get('id'))
         recipe.delete()  # type:ignore
         messages.warning(
-            self.request, 'Your recipe has been delete sucessfully!')
+            self.request, _('Your recipe has been delete sucessfully!'))
         return redirect(reverse('authors:dashboard'))
 
 
@@ -92,7 +93,7 @@ class DashboardRecipeUnpublish(DashboardRecipeEdit):
         recipe.is_published = False
         recipe.save()
         messages.warning(
-            self.request, 'Your recipe has been unpublished sucessfully!')
+            self.request, _('Your recipe has been unpublished sucessfully!'))
         return redirect(reverse('authors:dashboard'))
 
 

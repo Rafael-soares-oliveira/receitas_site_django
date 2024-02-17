@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
+from django.utils.translation import gettext as _
 
 
 def register_view(request):
@@ -26,7 +27,7 @@ def register_create(request):
         user = form.save(commit=False)
         user.set_password(user.password)
         user.save()
-        messages.success(request, 'Your user is created, please log in.')
+        messages.success(request, _('Your user is created, please log in.'))
         return render(request, 'pages/register_created.html')
 
     return redirect('authors:register')
@@ -57,9 +58,9 @@ def login_create(request):
             login(request, authenticated_user)
             return render(request, 'pages/login.html')
         else:
-            messages.error(request, 'Username or password incorrect!')
+            messages.error(request, _('Username or password incorrect!'))
     else:
-        messages.error(request, 'Invalid username or password')
+        messages.error(request, _('Invalid username or password'))
 
     return redirect(login_url)
 

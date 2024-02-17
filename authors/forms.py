@@ -4,6 +4,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserChangeForm
+from django.utils.translation import gettext as _
 
 
 class RegisterForm(forms.ModelForm):
@@ -21,66 +22,67 @@ class RegisterForm(forms.ModelForm):
     first_name = forms.CharField(
         required=True,
         widget=forms.TextInput(attrs={
-            'placeholder': 'Type your first name',
+            'placeholder': _('Type your first name'),
         }),
-        label='First name',
+        label=_('First Name'),
         error_messages={
-            'required': 'This field must not be empty'
+            'required': _('This field must not be empty')
         },
     )
 
     last_name = forms.CharField(
         required=True,
         widget=forms.TextInput(attrs={
-            'placeholder': 'Type your last name',
+            'placeholder': _('Type your last name'),
         }),
-        label='Last name',
+        label=_('Last Name'),
         error_messages={
-            'required': 'This field must not be empty'
+            'required': _('This field must not be empty')
         },
     )
 
     username = forms.CharField(
         required=True,
         widget=forms.TextInput(attrs={
-            'placeholder': 'Type your username',
+            'placeholder': _('Type your username'),
         }),
-        help_text='Username must have letters, numbers or one of those @.+-_.'
-        ' The length should be between 4 and 16 characters.',
-        label='Username',
+        help_text=_(
+            'Username must have letters, numbers or one of those @.+-_.'
+            ' The length should be between 4 and 16 characters.'),
+        label=_('Username'),
         min_length=4,
         max_length=16,
         error_messages={
-            'required': 'This field must not be empty',
-            'min_length': 'Username must have at least 4 characters',
-            'max_length': 'Username must have a maximum of 16 characters',
+            'required': _('This field must not be empty'),
+            'min_length': _('Username must have at least 4 characters'),
+            'max_length': _('Username must have a maximum of 16 characters'),
         },
     )
 
     email = forms.EmailField(
         required=True,
         widget=forms.EmailInput(attrs={
-            'placeholder': 'Type your email. Ex: email@email.com'
+            'placeholder': _('Type your email. Ex: email@email.com')
         }),
         label='Email',
         error_messages={
-            'required': 'This field must not be empty'
+            'required': _('This field must not be empty')
         },
     )
 
     password = forms.CharField(
         required=True,
         widget=forms.PasswordInput(attrs={
-            'placeholder': 'Type your password',
+            'placeholder': _('Type your password'),
         }),
-        label='Password',
+        label=_('Password'),
         error_messages={
-            'required': 'This field must not be empty'
+            'required': _('This field must not be empty')
         },
         help_text=(
-            'Password must have at least one uppercase letter, '
-            'one lowercase letter and one number.'
-            ' The length should be at least 8 characters.'
+            _('Password must have at least one uppercase letter, '
+              'one lowercase letter and one number.'
+              ' The length should be at least 8 characters.')
         ),
         validators=[strong_password]
     )
@@ -88,11 +90,11 @@ class RegisterForm(forms.ModelForm):
     password_confirm = forms.CharField(
         required=True,
         widget=forms.PasswordInput(attrs={
-            'placeholder': 'Repeat your password',
+            'placeholder': _('Repeat your password'),
         }),
-        label='Confirm password',
+        label=_('Confirm password'),
         error_messages={
-            'required': 'This field must not be empty'
+            'required': _('This field must not be empty')
         },
     )
 
@@ -102,7 +104,7 @@ class RegisterForm(forms.ModelForm):
 
         if exists:
             raise ValidationError(
-                'User e-mail is already in use', code='invalid')
+                _('User e-mail is already in use'), code='invalid')
 
         return email
 
@@ -113,8 +115,8 @@ class RegisterForm(forms.ModelForm):
 
         if password != password_confirm:
             raise ValidationError(
-                {'password': 'Passwords do not match!',
-                 'password_confirm': 'Passwords do not match!'},
+                {'password': _('Passwords do not match!'),
+                 'password_confirm': _('Passwords do not match!')},
             )
 
         return cleaned_data
@@ -123,13 +125,15 @@ class RegisterForm(forms.ModelForm):
 class LoginForm(forms.Form):
     username = forms.CharField(
         widget=forms.TextInput(attrs={
-            'placeholder': 'Type your username'
+            'placeholder': _('Type your username')
         }),
+        label=_('Username'),
     )
     password = forms.CharField(
         widget=forms.PasswordInput(attrs={
-            'placeholder': 'Type your password'
+            'placeholder': _('Type your password')
         }),
+        label=_('Password'),
     )
 
 
@@ -145,33 +149,33 @@ class ProfileForm(UserChangeForm):
     first_name = forms.CharField(
         required=True,
         widget=forms.TextInput(attrs={
-            'placeholder': 'Type your first name',
+            'placeholder': _('Type your first name'),
         }),
-        label='First name',
+        label=_('First name'),
         error_messages={
-            'required': 'This field must not be empty'
+            'required': _('This field must not be empty')
         },
     )
 
     last_name = forms.CharField(
         required=True,
         widget=forms.TextInput(attrs={
-            'placeholder': 'Type your last name',
+            'placeholder': _('Type your last name'),
         }),
-        label='Last name',
+        label=_('Last name'),
         error_messages={
-            'required': 'This field must not be empty'
+            'required': _('This field must not be empty')
         },
     )
 
     email = forms.EmailField(
         required=True,
         widget=forms.EmailInput(attrs={
-            'placeholder': 'Type your email. Ex: email@email.com'
+            'placeholder': _('Type your email. Ex: email@email.com')
         }),
-        label='Email',
+        label=_('Email'),
         error_messages={
-            'required': 'This field must not be empty'
+            'required': _('This field must not be empty')
         },
     )
 
@@ -181,7 +185,7 @@ class ProfileForm(UserChangeForm):
 
         if exists:
             raise ValidationError(
-                'User e-mail is already in use', code='invalid')
+                _('User e-mail is already in use'), code='invalid')
 
         return email
 
@@ -199,19 +203,19 @@ class MyProfileForm(UserChangeForm):
         widget=forms.TextInput(attrs={
             'readonly': 'readonly',
         }),
-        label='First name',
+        label=_('First name'),
     )
 
     last_name = forms.CharField(
         widget=forms.TextInput(attrs={
             'readonly': 'readonly',
         }),
-        label='Last name',
+        label=_('Last name'),
     )
 
     email = forms.EmailField(
         widget=forms.TextInput(attrs={
             'readonly': 'readonly',
         }),
-        label='Email',
+        label=_('Email'),
     )

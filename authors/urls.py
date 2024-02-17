@@ -1,7 +1,8 @@
 from django.urls import path
 from . import views
+from django.utils.translation import gettext as _
 
-app_name = 'authors'
+app_name = _('authors')
 
 urlpatterns = [
      path('register/', views.register_view, name='register'),

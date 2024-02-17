@@ -331,6 +331,15 @@ img {
   transform: scale(1.1);
 }
 
+.author-name {
+  transition: all 200ms ease-in-out;
+}
+
+.author-name:hover {
+  color: var(--color-primary-hover);
+  transform: scale(1.1);
+}
+
 .recipe-description {
   margin: var(--spacing-gutter-small);
   margin-left: var(--spacing-gutter-large);
@@ -346,7 +355,7 @@ img {
 
 .recipe-preparation-info {
   color: var(--color-dark-text);
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   text-align: center;
 }
 
@@ -378,6 +387,7 @@ img {
 
 .tags {
   text-align: center;
+  transition: all 200ms ease-in-out;
 }
 
 .tags a:visited {
