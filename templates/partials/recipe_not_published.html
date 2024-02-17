@@ -1,9 +1,10 @@
+{% load i18n %}
 <div class="recipe-edit-button">
     <form action="{% url "authors:dashboard_recipe_edit" recipe.id %}">
-        <button>Edit Recipe</button>
+        <button>{% translate "Edit Recipe" %}</button>
     </form>
     <form action="{% url "authors:dashboard" %}">
-        <button>Dashboard</button>
+        <button>{% translate "Dashboard" %}</button>
     </form>
 </div>
 
@@ -25,10 +26,6 @@
                     <i class="fas fa-calendar-alt"></i>
                     {{ recipe.created_at |date:"d/m/Y" }}
                 </span>
-                {% comment %} <a href="{% url "recipes:category" recipe.category.id %}">
-                    <i class="fas fa-layer-group"></i>
-                    {{ recipe.category.name }}
-                </a> {% endcomment %}
             </div>
             <div class="recipe-description">
                 <span>
@@ -37,17 +34,17 @@
             </div>
             <div class="recipe-preparation-info-container">
                 <div class="recipe-preparation-info">
-                    <h3><i class="fas fa-clock"></i> Preparo</h3>
+                    <h3><i class="fas fa-clock"></i> {% translate "Preparation" %}</h3>
                     <span>{{ recipe.preparation_time }} {{ recipe.preparation_time_unit }}</span>
                 </div>
                 <div class="recipe-preparation-info">
-                    <h3><i class="fas fa-pizza-slice"></i> Porções</h3>
+                    <h3><i class="fas fa-pizza-slice"></i> {% translate "Servings" %}</h3>
                     <span>{{ recipe.servings }} {{ recipe.servings_unit }}</span>
                 </div>
             </div>
 
             <div class="recipe-preparation-title">
-                <h2><i class="fas fa-blender"></i> Modo de Fazer</h2>
+                <h2><i class="fas fa-blender"></i> {% translate "Directions" %}</h2>
             </div>
             <div class="recipe-preparation">
                 {% if recipe.preparation_step_is_html is True %}

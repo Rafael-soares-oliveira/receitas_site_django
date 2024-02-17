@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="main-content">
     <form action="{{ form_action }}" method="POST" autocomplete="off" enctype="multipart/form-data">
         {% csrf_token %}
@@ -27,7 +28,7 @@
         
         <div class="form-content form-content-grid">
             <div class="form-group" aria-label='Button to confirm the registration'>
-                <button type="submit">Send</button>
+                <button type="submit">{% translate "Send" %}</button>
             </div>
         </div>
     </form>

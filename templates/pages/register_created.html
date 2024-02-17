@@ -1,12 +1,12 @@
 {% extends "partials/base.html" %}
-
-{% block title %}Register Sucess | {% endblock title %}
+{% load i18n %}
+{% block title %}{% translate "Register Sucess" %} | {% endblock title %}
 
 {% block content %}
 
     <div class="form-content">
         <div class="message message-sucess">
-            Your user is created, please <a href="{% url "authors:login" %}">login</a>.
+            {% translate "Your user is created, please" %} <a href="{% url "authors:login" %}">{% translate "login" %}</a>.
         </div>
     </div>
 

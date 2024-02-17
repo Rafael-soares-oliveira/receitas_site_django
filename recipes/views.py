@@ -8,7 +8,8 @@ from django.views.generic import ListView, DetailView
 from django.http import JsonResponse
 from django.forms.models import model_to_dict
 from tag.models import Tag
-# Create your views here.
+from django.utils import translation
+from django.utils.translation import gettext as _
 
 PER_PAGE = os.environ.get('PER_PAGE', 10)
 
@@ -34,11 +35,14 @@ class RecipeListViewBase(ListView):
             ctx.get('recipes'),
             PER_PAGE
         )
+        html_language = translation.get_language()
+
         ctx.update(
-            {'recipes': page_obj, 'pagination_range': pagination_range,
-             'last_page': pagination_range['total_pages'],
-             }
-        )
+            {
+                'recipes': page_obj, 'pagination_range': pagination_range,
+                'last_page': pagination_range['total_pages'],
+                'html_language': html_language,
+                })
         return ctx
 
 
@@ -60,6 +64,14 @@ class RecipeListViewHomeApi(RecipeListViewBase):
 
 class RecipeListViewCategory(RecipeListViewBase):
     template_name = "pages/category-view.html"
+
+    def get_context_data(self, *args, **kwargs):
+        ctx = super().get_context_data(*args, **kwargs)
+        category_translation = _('Category')
+        ctx.update({
+            'title': f'{ctx.get("recipes")[0].category.name} - '
+            f'{category_translation} | '})
+        return ctx
 
     def get_queryset(self, *args, **kwargs):
         qs = super().get_queryset(*args, **kwargs)

@@ -1,17 +1,17 @@
 {% extends "partials/base.html" %}
-
+{% load i18n %}
 {% block title %}{{ title }}{% endblock title %}
 
 {% block content %}
 <div class="center search-text">
-    <h1>Results find for: {{ search_term }}</h1>
+    <h1>{% translate "Results find for:" %} {{ search_term }}</h1>
 </div>
 <div class="main-content main-content-list container">
     {% for recipe in recipes %}
         {% include 'partials/recipes_base.html' %}
     {% empty %}
         <div class="center m-y">
-            <h1>No recipes found here.</h1>
+            <h1>{% translate "No recipes found here." %}</h1>
         </div>
     {% endfor %}
 </div>

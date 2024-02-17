@@ -1,19 +1,19 @@
 {% extends "partials/base.html" %}
-
-{% block title %}Dashboard | {% endblock title %}
+{% load i18n %}
+{% block title %}{% translate "Dashboard" %} | {% endblock title %}
 
 {% block content %}
     {% include "partials/messages.html" %}
     <div class="main-content center container">
-        <h2>Dashboard {{ request.user.first_name }} {{ request.user.last_name }}</h2>
+        <h2>{% translate "Dashboard" %} {{ request.user.first_name }} {{ request.user.last_name }}</h2>
         <form action="{% url "authors:dashboard_recipe_create"%}" class="button-create-recipe">
             <button type="submit">
-                <i class="fas fa-plus"></i> Create recipe
+                <i class="fas fa-plus"></i> {% translate "Create recipe" %}
             </button>
         </form>
         <div class="authors-dashboard-container">
             <div class="published-container">
-                <h3>Recipes Published - {{ number_recipes_published }}</h3> 
+                <h3>{% translate "Recipes Published" %} - {{ number_recipes_published }}</h3> 
                 <ul>
                     {% for recipe in recipes_published %}
                         <li class="recipe-dashboard-list">
@@ -21,19 +21,19 @@
                             <form class="form-unpublish" action="{% url 'authors:dashboard_recipe_unpublish' %}" method="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="id" value="{{ recipe.id }}">
-                                <button type="submit"><i class="fas fa-times"></i> Unpublish</button>
+                                <button type="submit"><i class="fas fa-times"></i> {% translate "Unpublish" %}</button>
                             </form>
                         </li>
                     {% empty %}
                     <li>
-                        <p>You do not have a recipe.</p>
+                        <p>{% translate "You do not have a recipe." %}</p>
                     </li>
                     {% endfor %}
                 </ul>
             </div>
 
             <div>
-                <h3>Recipes not yet Published - {{ number_recipes_not_published }}</h3>
+                <h3>{% translate "Recipes not yet Published" %} - {{ number_recipes_not_published }}</h3>
                 <ul class="not-published-container">
                     {% for recipe in recipes_not_published %}
                         <li class="recipe-dashboard-list">
@@ -41,12 +41,12 @@
                             <form class="form-delete" action="{% url 'authors:dashboard_recipe_delete' %}"  method="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="id" value="{{ recipe.id }}">
-                                <button type="submit"><i class="fas fa-trash"></i> Delete</button>
+                                <button type="submit"><i class="fas fa-trash"></i> {% translate "Delete" %}</button>
                             </form>
                         </li>
                     {% empty %}
                     <li>
-                        <p>You do not have a recipe.</p>
+                        <p>{% translate "You do not have a recipe." %}</p>
                     </li>
                     {% endfor %}
                 </ul>

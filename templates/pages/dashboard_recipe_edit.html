@@ -1,10 +1,10 @@
 {% extends "partials/base.html" %}
-
-{% block title %}Recipe Edit | {% endblock title %}
+{% load i18n %}
+{% block title %}{% translate "Recipe Edit" %} | {% endblock title %}
 
 {% block content %}
     <div class="main-content center container">
-        <h2>Recipe Edit</h2>
+        <h2>{% translate "Recipe Edit" %}</h2>
         <div class="authors-dashboard-container">
             {% include "partials/forms.html" %}
         </div>

@@ -1,8 +1,9 @@
+{% load i18n %}
 <header class="header">
     <div>
         <a class='header-logo' href="{% url "recipes:home" %}">
             <i class="fas fa-utensils"></i>
-            <span>Recipes</span>
+            <span>{% translate "Recipes" %}</span>
         </a>
     </div>
 </header>

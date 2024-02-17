@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <div class="recipe recipe-list-item">
     <div class="recipe-cover">
         <a href="{% url "recipes:recipe" recipe.id %}">
@@ -31,11 +33,11 @@
         </div>
         <div class="recipe-preparation-info-container">
             <div class="recipe-preparation-info">
-                <h3><i class="fas fa-clock"></i> Preparo</h3>
+                <h3><i class="fas fa-clock"></i> {% translate "Preparation" %}</h3>
                 <span>{{ recipe.preparation_time }} {{ recipe.preparation_time_unit }}</span>
             </div>
             <div class="recipe-preparation-info">
-                <h3><i class="fas fa-pizza-slice"></i> Porções</h3>
+                <h3><i class="fas fa-pizza-slice"></i> {% translate "Servings" %}</h3>
                 <span>{{ recipe.servings }} {{ recipe.servings_unit }}</span>
             </div>
         </div>
@@ -45,14 +47,14 @@
             <footer class="recipe-footer">
                 <a href="{% url "recipes:recipe" recipe.id %}" class="recipe-read-more button-full-width">
                     <i class="fas fa-eye"></i>
-                    <span>Ver mais...</span>
+                    <span>{% translate "Read More..." %}</span>
                 </a>
             </footer>
         {% endif %}
 
         {% if is_detail_page is True %}
             <div class="recipe-preparation-title">
-                <h2><i class="fas fa-blender"></i> Modo de Fazer</h2>
+                <h2><i class="fas fa-blender"></i> {% translate "Directions" %}</h2>
             </div>
             <div class="recipe-preparation">
                 {% if recipe.preparation_step_is_html is True %}

@@ -1,10 +1,11 @@
+{% load i18n %}
 {% extends "partials/base.html" %}
 
-{% block title %}My Profile | {% endblock title %}
+{% block title %}{% translate "My Profile" %} | {% endblock title %}
 
 {% block content %}
         <div class="main-content main-content-detail container center">
-            <h2>Profile {{ request.user.first_name }} {{ request.user.last_name }}</h2>
+            <h2>{% translate "Profile" %} {{ request.user.first_name }} {{ request.user.last_name }}</h2>
             <p>{{ request.user.profile.bio }}</p>
         </div>
         <div class="form-content-read form-content-grid">
@@ -13,7 +14,7 @@
                 {{ form.as_p }}
                 <div class="form-content form-content-grid">
                     <div class="form-group" aria-label='Button to edit the profile'>
-                        <a href="{% url "authors:myprofile_edit" %}"><button>Edit</button></a>
+                        <a href="{% url "authors:myprofile_edit" %}"><button>{% translate "Edit" %}</button></a>
                     </div>
                 </div>
             </form>

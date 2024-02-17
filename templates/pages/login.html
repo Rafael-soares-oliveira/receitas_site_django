@@ -1,23 +1,23 @@
 {% extends "partials/base.html" %}
-
-{% block title %}Login | {% endblock title %}
+{% load i18n %}
+{% block title %}{% translate "Login" %} | {% endblock title %}
 
 {% block content %}
 
     {% include "partials/messages.html" %}
 
     <div class="form-content">
-        <h2>Login</h2>
+        <h2>{% translate "Login" %}</h2>
 
         {% if request.user.is_authenticated %}
         <div class="logged">
-            Your are logged in with {{ request.user.username }}. 
-            <a href="{% url 'authors:dashboard' %}">See your recipes</a> or
-            <a href="{% url 'authors:myprofile' %}">See your profile</a>.
+            {% translate "Your are logged in with" %} {{ request.user.username }}. 
+            <a href="{% url 'authors:dashboard' %}">{% translate "See your recipes" %}</a> or
+            <a href="{% url 'authors:myprofile' %}">{% translate "See your profile" %}</a>.
         </div>
         <form class="logged-logout" action="{% url 'authors:logout' %}" method='POST'>
             {% csrf_token %}
-            <button type="submit">Logout</button>
+            <button type="submit">{% translate "Logout" %}</button>
         </form>
         {% endif %}
     </div>

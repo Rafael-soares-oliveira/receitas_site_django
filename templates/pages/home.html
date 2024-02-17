@@ -1,6 +1,6 @@
 {% extends "partials/base.html" %}
-
-{% block title %}Home | {% endblock title %}
+{% load i18n %}
+{% block title %}{% translate "Home" %} | {% endblock title %}
 
 
 {% block content %}
@@ -10,7 +10,7 @@
         {% include "partials/recipes_base.html" %}
     {% empty %}
         <div class="center m-y">
-            <h1>No recipes found here.</h1>
+            <h1>{% translate "No recipes found here." %}</h1>
         </div>
     {% endfor %}
     </div>

@@ -1,11 +1,11 @@
 {% extends "partials/base.html" %}
-
-{% block title %}Register | {% endblock title %}
+{% load i18n %}
+{% block title %}{% translate "Register" %} | {% endblock title %}
 
 {% block content %}
 
     <div class="form-content">
-        <h2>Register</h2>
+        <h2>{% translate "Register" %}</h2>
     </div>
 
     {% include "partials/forms.html" %}

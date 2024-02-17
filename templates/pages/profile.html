@@ -1,10 +1,11 @@
+{% load i18n %}
 {% extends "partials/base.html" %}
 
-{% block title %}Profile {{ profile.authors.id }} | {% endblock title %}
+{% block title %}{% translate "Profile" %} {{ profile.authors.id }} | {% endblock title %}
 
 {% block content %}
         <div class="main-content main-content-detail container center">
-            <h2>Profile {{ profile.author.first_name }} {{ profile.author.last_name }}</h2>
+            <h2>{% translate "Profile" %} {{ profile.author.first_name }} {{ profile.author.last_name }}</h2>
             <p>{{ profile.bio }}</p>
         </div>
 {% endblock content %}
