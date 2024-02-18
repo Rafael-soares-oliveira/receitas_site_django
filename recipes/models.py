@@ -1,10 +1,13 @@
 from collections import defaultdict
+import os
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from django.forms import ValidationError
 from django.utils.text import slugify
 from tag.models import Tag
 from django.utils.translation import gettext as _
+from PIL import Image
 
 
 class Category(models.Model):
@@ -35,8 +38,8 @@ class Recipe(models.Model):
     update_at = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=False)
     cover = models.ImageField(
-        upload_to='media/covers/%Y/%m/%d', blank=False,
-        default='tests/tests_recipes/imagem_temporaria.jpg',
+        upload_to='media/covers/%Y/%m/%d', blank=True,
+        default='',
         verbose_name=_('Cover'))
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True,
@@ -47,11 +50,38 @@ class Recipe(models.Model):
     def __str__(self) -> str:
         return self.title
 
+    @staticmethod
+    def resize_image(image, new_width=800):
+        image_full_path = os.path.join(settings.MEDIA_ROOT, image.name)
+        image_pillow = Image.open(image_full_path)
+        original_width, original_height = image_pillow.size
+
+        if original_width <= new_width:
+            image_pillow.close()
+            return
+
+        new_height = round(new_width * original_height / original_width)
+        new_image = image_pillow.resize((new_width, new_height), Image.LANCZOS)
+        new_image.save(
+            image_full_path,
+            optimize=True,
+            quality=50,
+            )
+
     def save(self, *args, **kwargs):
         if not self.slug:
             slug = f'{slugify(self.title)}'
             self.slug = slug
-        return super().save(*args, **kwargs)
+
+        saved = super().save(*args, **kwargs)
+
+        if self.cover:
+            try:
+                self.resize_image(self.cover, 800)
+            except FileNotFoundError:
+                ...
+
+        return saved
 
     def clean(self, *args, **kwargs):
         error_messages = defaultdict(list)

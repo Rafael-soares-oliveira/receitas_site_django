@@ -36,7 +36,7 @@ class RecipeMixin():
             preparation_step='Recipe Preparation Steps',
             preparation_step_is_html=False,
             is_published=True,
-            cover='tests/tests_recipes/imagem_temporaria.jpg',
+            cover='tests/tests_recipes/imagem_generica.jpg',
     ):
         if category_data is None:
             category_data = {}
