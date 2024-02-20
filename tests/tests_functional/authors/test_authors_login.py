@@ -38,8 +38,8 @@ class AuthorsTestLogin(AuthorsBaseFunctionalTest):
             By.XPATH,
             '/html/body/main')
 
-        msg_sucess = f'Your are logged in with {user.username}'
-        msg_logged = f'Your are logged in with {user.username}'
+        msg_sucess = f'Você está logado com {user.username}'
+        msg_logged = f'Você está logado com {user.username}'
         self.assertIn(msg_sucess, form.text)
         self.assertIn(msg_logged, form.text)
 
@@ -67,7 +67,7 @@ class AuthorsTestLogin(AuthorsBaseFunctionalTest):
             By.XPATH,
             '/html/body/main')
 
-        msg_error = 'Invalid username or password'
+        msg_error = 'Usuário ou senha inválido'
         self.assertIn(msg_error, form.text)
 
     def test_login_create_raises_404_if_not_method_POST(self):

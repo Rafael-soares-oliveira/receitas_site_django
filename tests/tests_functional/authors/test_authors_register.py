@@ -29,8 +29,8 @@ class AuthorsTestRegister(AuthorsBaseFunctionalTest):
     def test_error_message_for_empty_field_and_email_invalid(self):
         # EmailField requires that the format be at least equal to 1@1
         text_input = ['', '    ', '    ', '    ', '1@1', '    ', '    ']
-        text_error = 'This field must not be empty'
-        email_error = 'Informe um endereço de email válido'
+        text_error = 'Este campo não pode estar vazio'
+        email_error = 'Insira um endereço de email válido'
 
         self.fill_form_dummy_data_and_send(text=text_input)
 
@@ -50,7 +50,7 @@ class AuthorsTestRegister(AuthorsBaseFunctionalTest):
         self.assertIn(email_error, email_form.text)
 
     def test_passwords_do_not_match(self):
-        msg_error = 'Passwords do not match!'
+        msg_error = "Senhas não coincidem!"
 
         self.fill_form_dummy_data_and_send(
             text=['', 'User', 'UserUser', 'user', 'user@email.com', 'P@ss4656',
@@ -84,7 +84,7 @@ class AuthorsTestRegister(AuthorsBaseFunctionalTest):
         self.assertIn(msg_error, username.text)
 
     def test_register_created_sucessfully(self):
-        msg = 'Your user is created, please login.'
+        msg = "Seu usuário foi criado, por favor acesse."
         self.fill_form_dummy_data_and_send()
 
         msg_sucess = self.browser.find_element(

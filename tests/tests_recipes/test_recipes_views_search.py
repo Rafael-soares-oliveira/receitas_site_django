@@ -1,13 +1,15 @@
 from django.urls import reverse, resolve
-from recipes import views
+from recipes.views import views_site
 from test_recipes_model_base import RecipeTestModelBase
 # Uses a database
+from django.utils import translation
 
 
 class Recipe_views_test_search(RecipeTestModelBase):
     def test_recipe_search_uses_correct_view_template(self):
         resolved = resolve(reverse('recipes:search'))
-        self.assertIs(resolved.func.view_class, views.RecipeListViewSearch)
+        self.assertIs(
+            resolved.func.view_class, views_site.RecipeListViewSearch)
 
     def test_recipe_search_loads_correct_template(self):
         response = self.client.get(reverse('recipes:search') + '?q=1')
@@ -27,7 +29,13 @@ class Recipe_views_test_search(RecipeTestModelBase):
     def test_recipe_search_return_none_if_is_published_is_false(self):
         self.make_recipe(is_published=False)
         response = self.client.get(reverse('recipes:search') + '?q=Test')
-        self.assertIn('No recipes found', response.content.decode('utf-8'))
+        msg_ptbr = 'Não há receita'
+        msg_en = 'No recipes found'
+        html_language = translation.get_language()
+        if html_language == 'pt-br':
+            self.assertIn(msg_ptbr, response.content.decode('utf-8'))
+        else:
+            self.assertIn(msg_en, response.content.decode('utf-8'))
 
     def test_recipe_search_can_find_recipe_by_title(self):
         recipe1 = self.make_recipe(title='This is recipe one', slug='one',
