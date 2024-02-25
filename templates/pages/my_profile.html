@@ -5,8 +5,14 @@
 {% block content %}
         <div class="main-content main-content-detail container center">
             <h2>{% translate "Profile" %} {{ request.user.first_name }} {{ request.user.last_name }}</h2>
-            <p>{{ request.user.profile.bio }}</p>
+            <p class='bio'>" {{ request.user.profile.bio }} "</p>
+            <div class="form-content form-content-grid">
+                <a href="{% url "authors:myprofile_bio_edit" %}">
+                    <button>{% translate "Edit Bio" %}</button>
+                </a>
+            </div>
         </div>
+        {% include "partials/messages.html" %}
         <div class="form-content-read form-content-grid">
             <form action="" method="POST">
                 {% csrf_token %}

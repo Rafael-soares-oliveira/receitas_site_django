@@ -1,4 +1,6 @@
+from collections import defaultdict
 from typing import Any
+from authors.models import Profile
 from utils.functions import strong_password
 from django import forms
 from django.contrib.auth.models import User
@@ -137,60 +139,40 @@ class LoginForm(forms.Form):
     )
 
 
-class ProfileForm(UserChangeForm):
+class ProfileFormEdit(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._my_errors = defaultdict(list)
+
     class Meta:
         model = User
         fields = [
             'first_name',
             'last_name',
-            'email',
         ]
 
-    first_name = forms.CharField(
-        required=True,
-        widget=forms.TextInput(attrs={
-            'placeholder': _('Type your first name'),
-        }),
-        label=_('First name'),
-        error_messages={
-            'required': _('This field must not be empty')
-        },
-    )
+        def clean(self, *args, **kwargs):
+            super_clean = super().clean(*args, **kwargs)
 
-    last_name = forms.CharField(
-        required=True,
-        widget=forms.TextInput(attrs={
-            'placeholder': _('Type your last name'),
-        }),
-        label=_('Last name'),
-        error_messages={
-            'required': _('This field must not be empty')
-        },
-    )
+            if self._my_errors:
+                raise ValidationError(self._my_errors)
 
-    email = forms.EmailField(
-        required=True,
-        widget=forms.EmailInput(attrs={
-            'placeholder': _('Type your email. Ex: email@email.com')
-        }),
-        label=_('Email'),
-        error_messages={
-            'required': _('This field must not be empty')
-        },
-    )
+            return super_clean
 
-    def clean_email(self):
-        email = self.cleaned_data.get('email', '')
-        exists = User.objects.filter(email=email).exists()
+        def clean_email(self):
+            email = self.cleaned_data.get('email', '')
+            exists = User.objects.filter(email=email).exists()
 
-        if exists:
-            raise ValidationError(
-                _('User e-mail is already in use'), code='invalid')
+            if exists:
+                raise ValidationError(
+                    _('User e-mail is already in use'), code='invalid')
 
-        return email
+            return email
 
 
 class MyProfileForm(UserChangeForm):
+    password = None
+
     class Meta:
         model = User
         fields = [
@@ -219,3 +201,23 @@ class MyProfileForm(UserChangeForm):
         }),
         label=_('Email'),
     )
+
+
+class BioFormEdit(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._my_errors = defaultdict(list)
+
+    class Meta:
+        model = Profile
+        fields = [
+            'bio',
+        ]
+
+        def clean(self, *args, **kwargs):
+            super_clean = super().clean(*args, **kwargs)
+
+            if self._my_errors:
+                raise ValidationError(self._my_errors)
+
+            return super_clean

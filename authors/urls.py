@@ -36,11 +36,17 @@ urlpatterns = [
      path('myprofile/', views.MyProfileView.as_view(),
           name="myprofile"),
 
+     path('myprofile/bio_edit/', views.BioEditView.as_view(),
+          name="myprofile_bio_edit"),
+
      path('myprofile/edit/', views.MyProfileEditView.as_view(),
           name="myprofile_edit"),
 
      path('myprofile/edit/password/',
-          views.PasswordsChangeView.as_view(
-              template_name='pages/change-password.html'),
-          name='myprofile_edit_password')
+          views.PasswordsChangeView.as_view(),
+          name='myprofile_edit_password'),
+
+     path('myprofile/edit/password/done/',
+          views.PasswordsDoneChangeView.as_view(),
+          name='myprofile_edit_password_done'),
 ]

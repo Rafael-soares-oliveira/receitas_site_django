@@ -4,13 +4,11 @@
 
 {% block content %}
         <div class="main-content main-content-detail container center">
-            <h2>{% translate "Profile Edit" %}</h2>
+            <h2>{% translate "Bio Edit" %}</h2>
         </div>
         <div class="form-content form-content-grid">
-            {% include "partials/forms.html" %}
-            <div class="form-group" aria-label='Button to edit the password'>
-                <a href="{% url "authors:myprofile_edit_password" %}"><button>{% translate "Edit Password" %}</button></a>
+            <div class="authors-dashboard-container">
+                {% include "partials/forms.html" %}
             </div>
         </div>
-        
 {% endblock content %}
